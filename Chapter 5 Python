@@ -1,0 +1,123 @@
+                                                                CLUSTERING
+Clustering is the most common use case for unsupervised learning. The problem of clustering is to find groups within a data set that have some commonalities. 
+Clustering can be used for a variety of applications, from customer segmentation to basic recommendation systems.
+
+K-means clustering is one of the most widely used unsupervised machine learning algorithms that forms clusters of data based on the similarity between data instances. 
+For this particular algorithm to work, the number of clusters has to be defined beforehand. The K in the K-means refers to the number of clusters.
+
+The K-means algorithm starts by randomly choosing a centroid value for each cluster. After that the algorithm iteratively performs three steps:
+(i) Find the Euclidean distance between each data instance and centroids of all the clusters; 
+(ii) Assign the data instances to the cluster of the centroid with nearest distance; 
+(iii) Calculate new centroid values based on the mean values of the coordinates of all the data instances from the corresponding cluster.
+
+It takes three lines of code to implement the K-means clustering algorithm in Scikit-Learn.
+A Simple Example
+Let's try to see how the K-means algorithm works with the help of a handcrafted example, before implementing the algorithm in Scikit-Learn. 
+Suppose we have a set of two dimensional data instances named D. We want to divide this data into two clusters, C1 and C2 based on the similarity between the data points.
+
+The first step is to randomly initialize values for the centroids of both clusters. Let's name centroids of clusters C1 and C2 as c1 and c2 and initialize them with the 
+values of the first two data points. After assigning data points to the corresponding clusters, the next step is to calculate the new centroid values. These values are 
+calculated by finding the means of the coordinates of the data points that belong to a particular cluster.
+For the next iteration, the new centroid values for c1 and c2 will be used and the whole process will be repeated. The iterations continue until the centroid values stop updating.
+
+Implementation in scikit learn:
+*Import Libraries- Matplotlib,Numpy and Scikit-Learn. 
+* Prepare Data
+The next step is to prepare the data that we want to cluster. Let's create a numpy array of 10 rows and 2 columns. The row contains the same data points that we used for our manual K-means clustering example in the last section. We create a numpy array of data points because the Scikit-Learn library can work with numpy array type data inputs without requiring any preprocessing.
+
+X = np.array([[5,3],
+     [10,15],
+     [15,12],
+     [24,10],
+     [30,45],
+     [85,70],
+     [71,80],
+     [60,78],
+     [55,52],
+     [80,91],])
+Visualize the Data
+You can see these are the same data points that we used in the previous example. Let's plot these points and check if we can eyeball any clusters. To do so, execute the following line:
+
+
+plt.scatter(X[:,0],X[:,1], label='True Position')
+The above code simply plots all the values in the first column of the X array against all the values in the second column. The graph will look like this:
+
+k-means plot 1
+From the naked eye, if we have to form two clusters of the above data points, we will probably make one cluster of five points on the bottom left and one cluster of five points on the top right. Let's see if our K-means clustering algorithm does the same or not.
+
+Create Clusters
+To create a K-means cluster with two clusters, simply type the following script:
+
+kmeans = KMeans(n_clusters=2)
+kmeans.fit(X)
+Yes, it is just two lines of code. In the first line, you create a KMeans object and pass it 2 as value for n_clusters parameter. Next, you simply have to call the fit method on kmeans and pass the data that you want to cluster, which in this case is the X array that we created earlier.
+
+Now let's see what centroid values the algorithm generated for the final clusters. Type:
+
+print(kmeans.cluster_centers_)
+The output will be a two dimensional array of shape 2 x 2.
+
+[[ 16.8  17. ]
+ [ 70.2  74.2]]
+Here the first row contains values for the coordinates of the first centroid i.e. (16.8 , 17) and the second row contains values for the coordinates of the other centroid i.e. (70.2, 74.2). You can see that these values are similar to what we calculated manually for centroids c1 and c2 in the last section. In short, our algorithm works fine.
+
+To see the labels for the data point, execute the following script.
+
+print(kmeans.labels_)
+The output is a one dimensional array of 10 elements corresponding to the clusters assigned to our 10 data points.
+
+[0 0 0 0 0 1 1 1 1 1]
+Here the first five points have been clustered together and the last five points have been clustered. Here 0 and 1 are merely used to represent cluster IDs and have no mathematical significance. If there were three clusters, the third cluster would have been represented by digit 2.
+
+Let's plot the data points again on the graph and visualize how the data has been clustered. This time we will plot the data along with their assigned label so that we can distinguish between the clusters. Execute the following script:
+
+plt.scatter(X[:,0],X[:,1], c=kmeans.labels_, cmap='rainbow')
+Here we are plotting the first column of the X array against the second column, however in this case we are also passing kmeans.labels_ as value for the c parameter that corresponds to labels. The cmap='rainbow' parameter is passed for choosing the color type for the different data points. The output graph should look like this:
+
+k-means plot 2
+As expected, the first five points on the bottom left have been clustered together (displayed with blue), while the remaining points on the top right have been clustered together (displayed with red).
+
+Now let's execute K-means algorithm with three clusters and see the output graph.
+
+k-means plot 3
+You can see that again the points that are close to each other have been clustered together.
+
+Now let's plot the points along with the centroid coordinates of each cluster to see how the centroid positions effects clustering. Again we will use three clusters to see the effect of centroids. Execute the following script to draw the graph:
+
+plt.scatter(X[:,0], X[:,1], c=kmeans.labels_, cmap='rainbow')
+plt.scatter(kmeans.cluster_centers_[:,0] ,kmeans.cluster_centers_[:,1], color='black')
+Here in this case we are plotting the data points in rainbow colors while the centroids are in black. The output looks like this:
+
+k-means plot 4
+In case of three clusters, the two points in the middle (displayed in red) have distance closer to the centroid in the middle (displayed in black between the two reds), as compared to the centroids on the bottom left or top right. However if there were two clusters, there wouldn't have been a centroid in the center, hence the red points would have to be clustered together with the points in the bottom left or top right clusters.
+
+5.2 Hierarchical Clustering:
+What is Hierarchical Clustering?
+Let’s say we have the below points and we want to cluster them into groups. We can assign each of these points to a separate cluster.
+Now, based on the similarity of these clusters, we can combine the most similar clusters together and repeat this process until only a single cluster is left.
+We are essentially building a hierarchy of clusters. That’s why this algorithm is called hierarchical clustering.
+
+Types of Hierarchical Clustering
+There are mainly two types of hierarchical clustering:
+
+*Agglomerative hierarchical clustering
+*Divisive Hierarchical clustering
+
+Agglomerative Hierarchical Clustering
+We assign each point to an individual cluster in this technique. Suppose there are 4 data points. We will assign each of these points to a cluster and hence will have 4 clusters
+in the beginning. Then, at each iteration, we merge the closest pair of clusters and repeat this step until only a single cluster is left.
+
+Divisive Hierarchical Clustering
+Divisive hierarchical clustering works in the opposite way. Instead of starting with n clusters (in case of n observations), we start with a single cluster and assign 
+all the points to that cluster.
+Now, at each iteration, we split the farthest point in the cluster and repeat this process until each cluster only contains a single point.
+
+Steps to Perform Hierarchical Clustering
+We merge the most similar points or clusters in hierarchical clustering – we know this. Now the question is – how do we decide which points are similar and which are not? It’s one of the most important questions in clustering!
+Here’s one way to calculate similarity – Take the distance between the centroids of these clusters. The points having the least distance are referred to as similar points and we can merge them. We can refer to this as a distance-based algorithm as well (since we are calculating the distances between the clusters).
+In hierarchical clustering, we have a concept called a proximity matrix. This stores the distances between each point. Let’s take an example to understand this matrix as well as the steps to perform hierarchical clustering
+
+
+
+
+
