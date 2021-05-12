@@ -1,0 +1,106 @@
+                                            Introduction to Flask - PART 1
+                                           
+Flask is a web application framework written in Python. Armin Ronacher, who leads an international group of Python enthusiasts named Pocco, develops it. Flask is based on
+Werkzeug WSGI toolkit and Jinja2 template engine.            
+
+1. Flask – Environment:
+Install virtualenv for development environment
+virtualenv is a virtual Python environment builder. It helps a user to create multiple Python environments side-by-side. Thereby, it can avoid compatibility issues between
+the different versions of the libraries.
+
+The following command installs virtualenv:
+pip install virtualenv
+
+Once installed, new virtual environment is created in a folder.
+Importing flask module in the project is mandatory. An object of Flask class is our WSGI application.
+Flask constructor takes the name of current module (__name__) as argument.
+The route() function of the Flask class is a decorator, which tells the application which URL should call the associated function.
+app.route(rule, options).
+  *The rule parameter represents URL binding with the function.
+  *The options is a list of parameters to be forwarded to the underlying Rule object.
+
+Finally the run() method of Flask class runs the application on the local development server.
+app.run(host, port, debug, options).
+1	.host
+Hostname to listen on. Defaults to 127.0.0.1 (localhost). Set to ‘0.0.0.0’ to have server available externally
+
+2	.port
+Defaults to 5000
+
+3	.debug
+Defaults to false. If set to true, provides a debug information
+
+4.options
+To be forwarded to underlying Werkzeug server.
+
+Debug mode
+A Flask application is started by calling the run() method. However, while the application is under development, it should be restarted manually for each change in the code. To avoid this inconvenience, enable debug support. The server will then reload itself if the code changes. It will also provide a useful debugger to track the errors if any, in the application.
+The Debug mode is enabled by setting the debug property of the application object to True before running or passing the debug parameter to the run() method.
+
+app.debug = True
+app.run()
+app.run(debug = True)
+
+2. Flask Routing
+Modern web frameworks use the routing technique to help a user remember application URLs. It is useful to access the desired page directly without having to navigate from the home page.
+
+The route() decorator in Flask is used to bind URL to a function. For example −
+
+@app.route(‘/hello’)
+def hello_world():
+   return ‘hello world’
+Here, URL ‘/hello’ rule is bound to the hello_world() function. As a result, if a user visits http://localhost:5000/hello URL, the output of the hello_world() function will be rendered in the browser.
+The add_url_rule() function of an application object is also available to bind a URL with a function as in the above example, route() is used.
+A decorator’s purpose is also served by the following representation −
+def hello_world():
+   return ‘hello world’
+app.add_url_rule(‘/’, ‘hello’, hello_world)
+
+3. Flask Variable Rules:
+t is possible to build a URL dynamically, by adding variable parts to the rule parameter. This variable part is marked as <variable-name>. It is passed as a keyword argument to the function with which the rule is associated.
+In the following example, the rule parameter of route() decorator contains <name> variable part attached to URL ‘/hello’. Hence, if the http://localhost:5000/hello/TutorialsPoint is entered as a URL in the browser, ‘TutorialPoint’ will be supplied to hello() function as argument.
+In addition to the default string variable part, rules can be constructed using the following converters −
+
+Sr.No.	Converters & Description
+1	int
+accepts integer
+
+2	float
+For floating point value
+
+3	path
+accepts slashes used as directory separator character
+
+4.Flask - URL Building
+    The url_for() function is very useful for dynamically building a URL for a specific function. The function accepts the name of a function as first argument, 
+    and one or more keyword arguments, each corresponding to the variable part of URL.
+
+5. Flask – HTTP methods
+    Http protocol is the foundation of data communication in world wide web. Different methods of data retrieval from specified URL are defined in this protocol.
+  
+1.GET
+Sends data in unencrypted form to the server. Most common method.
+
+2	.HEAD
+Same as GET, but without response body
+
+3	.POST
+Used to send HTML form data to server. Data received by POST method is not cached by server.
+
+4	.PUT
+Replaces all current representations of the target resource with the uploaded content.
+
+5	.DELETE
+Removes all current representations of the target resource given by a URL
+By default, the Flask route responds to the GET requests. However, this preference can be altered by providing methods argument to route() decorator.
+In order to demonstrate the use of POST method in URL routing, first let us create an HTML form and use the POST method to send form data to a URL.
+
+
+
+
+
+
+
+
+
+
