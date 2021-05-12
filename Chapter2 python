@@ -1,0 +1,112 @@
+                                                Chapter 2 - Python
+                                                
+Python is a popular programming language. It was created by Guido van Rossum, and released in 1991 used for web development (server-side), software development,mathematics,
+and system scripting.
+
+1. Python Syntax :
+ Python syntax can be executed by writing directly in the Command Line:
+eg:
+      >>> print("Hello, World!")
+      Hello, World!
+ Or by creating a python file on the server, using the .py file extension, and running it in the Command Line.
+ 
+2. Python Comments:
+Comments can be used to explain Python code and to make it more readable. eg: #This is a comment
+
+3. Python Variables:
+Variables are containers for storing data values.Python has no command for declaring a variable. A variable is created the moment you first assign a value to it.
+   Rules:   
+      * A variable name must start with a letter or the underscore character. 
+      * A variable name cannot start with a number.
+      * A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).
+      * Variable names are case-sensitive (age, Age and AGE are three different variables).
+ 
+ 4. Python Data Types:
+      Built-in Data Types
+In programming, data type is an important concept. Variables can store data of different types, and different types can do different things.
+Python has the following data types built-in by default, in these categories:
+
+Text Type:	str
+Numeric Types:	int, float, complex
+Sequence Types:	list, tuple, range
+Mapping Type:	dict
+Set Types:	set, frozenset
+Boolean Type:	bool
+Binary Types:	bytes, bytearray, memoryview
+You can get the data type of any object by using the type() function.
+
+5. Python Numbers
+There are three numeric types in Python:
+
+int
+float
+complex
+Variables of numeric types are created when you assign a value to them:
+Example
+x = 1    # int
+y = 2.8  # float
+z = 1j   # complex
+To verify the type of any object in Python, use the type() function.
+
+6. Python Strings
+ Strings
+Strings in python are surrounded by either single quotation marks, or double quotation marks.
+
+'hello' is the same as "hello".
+
+You can display a string literal with the print() function.
+    6.1 Slicing
+          You can return a range of characters by using the slice syntax.Specify the start index and the end index, separated by a colon, to return a part of the string.
+    6.2  Python - Modify Strings
+          * The upper() method returns the string in upper case.
+          * The lower() method returns the string in lower case.
+          * The replace() method replaces a string with another string.  
+   6.3  String Concatenation
+        To concatenate, or combine, two strings you can use the + operator.
+   6.4  Python - Format - Strings
+          we can combine strings and numbers by using the format() method!
+The format() method takes the passed arguments, formats them, and places them in the string where the placeholders {}.
+
+  6.5   String functions 
+    Python has a set of built-in methods that you can use on strings. Few of them are:
+    capitalize()	Converts the first character to upper case.
+    casefold()	Converts string into lower case.
+    center()	Returns a centered string.
+
+7.  Python Booleans:
+    In programming you often need to know if an expression is True or False.You can evaluate any expression in Python, and get one of two answers, True or False.
+When you compare two values, the expression is evaluated and Python returns the Boolean answer which are 'True' or 'False'.
+
+8. Python Operators
+Operators are used to perform operations on variables and values.
+Python divides the operators in the following groups:
+  *Arithmetic operators 
+  *Assignment operators
+  *Comparison operators
+  *Logical operators
+  *Identity operators
+  *Membership operators
+  *Bitwise operators
+
+9. Python Conditions and If statements
+  Python supports the usual logical conditions conditions can be used in several ways, most commonly in "if statements" and loops.
+  An "if statement" is written by using the if keyword.
+10. Python Loops
+    Python has two primitive loop commands:
+    while loops
+    for loops
+    1. The while Loop
+    With the while loop we can execute a set of statements as long as a condition is true.
+    2. Python For Loops
+      A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
+      This is less like the for keyword in other programming languages, and works more like an iterator method as found in other object-orientated programming languages.
+  
+ 11. Python Functions
+A function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function.
+A function can return data as a result.
+
+
+    
+    
+    
+    
