@@ -4,7 +4,7 @@ Supervised learning is one of the major categories of machine learning algorithm
 algorithm to learn. The algorithm learns to distinguish the two categories. This kind of distinction between categories is called ‘classification’. 
 Another kind of supervised learning is ‘regression’, where an algorithm learns to predict values on a continuous scale. 
 
-4.1 LINEAR PREDICTIONS
+4.1. LINEAR PREDICTIONS
 Linear methods are the simplest, yet often the fastest and most effective set of algorithms.
 They are divided as follows:
 1. Linear regression:
@@ -43,4 +43,152 @@ using the derivative of the cost function to find the gradient.
 
 calculate the gradient of this cost function as:
 f′(m,b)=⎡⎣dfdmdfdb⎤⎦=[1N∑−xi⋅2(yi−(mxi+b))1N∑−1⋅2(yi−(mxi+b))]=[1N∑−2xi(yi−(mxi+b))1N∑−2(yi−(mxi+b))]
+
+4.2 LOGISTIC REGRESSION
+Logistic regression is one of the most popular machine learning algorithms for binary classification. This is because it is a simple algorithm that performs very well on a
+wide range of problems.
+
+Logistic Function: 
+Before we dive into logistic regression, let’s take a look at the logistic function, the heart of the logistic regression technique.
+
+The logistic function is defined as:
+
+transformed = 1 / (1 + e^-x)
+
+Where e is the numerical constant Euler’s number and x is a input we plug into the function.
+
+Logistic Regression Model:
+The logistic regression model takes real-valued inputs and makes a prediction as to the probability of the input belonging to the default class (class 0).
+
+If the probability is > 0.5 we can take the output as a prediction for the default class (class 0), otherwise the prediction is for the other class (class 1).
+
+For this dataset, the logistic regression has three coefficients just like linear regression, for example:
+
+output = b0 + b1*x1 + b2*x2
+
+The job of the learning algorithm will be to discover the best values for the coefficients (b0, b1 and b2) based on the training data.
+
+Unlike linear regression, the output is transformed into a probability using the logistic function:
+
+p(class=0) = 1 / (1 + e^(-output))
+
+In your spreadsheet this would be written as:
+
+p(class=0) = 1 / (1 + EXP(-output))
+
+Calculate Prediction
+Let’s start off by assigning 0.0 to each coefficient and calculating the probability of the first training instance that belongs to class 0.
+
+B0 = 0.0
+
+B1 = 0.0
+
+B2 = 0.0
+
+let the first training instance is: x1=2.7810836, x2=2.550537003, Y=0
+
+Using the above equation we can plug in all of these numbers and calculate a prediction:
+
+prediction = 1 / (1 + e^(-(b0 + b1*x1 + b2*x2)))
+
+prediction = 1 / (1 + e^(-(0.0 + 0.0*2.7810836 + 0.0*2.550537003)))
+
+prediction = 0.5
+
+Calculate New Coefficients
+We can calculate the new coefficient values using a simple update equation.
+
+b = b + alpha * (y – prediction) * prediction * (1 – prediction) * x
+
+Where b is the coefficient we are updating and prediction is the output of making a prediction using the model.
+Alpha is parameter that you must specify at the beginning of the training run. This is the learning rate and controls how much the coefficients (and therefore the model) 
+changes or learns each time it is updated. 
+
+Repeat the Process
+We can repeat this process and update the model for each training instance in the dataset.
+A single iteration through the training dataset is called an epoch. It is common to repeat the stochastic gradient descent procedure for a fixed number of epochs.
+At the end of epoch you can calculate error values for the model. 
+
+Make Predictions
+Now that we have trained the model, we can use it to make predictions.
+We can make predictions on the training dataset, but this could just as easily be new data.
+
+4.2 NON-LINEAR PREDICTIONS
+While linear methods work well enough a lot of the time, real-world problems are sometimes much more complex. Fortunately, we have at our disposal other machine learning
+algorithms and techniques to deal with complex, non-linear data sets.
+  1. Random forests:
+    Random forest is a supervised learning algorithm. The "forest" it builds, is an ensemble of decision trees, usually trained with the “bagging” method. 
+    The general idea of the bagging method is that a combination of learning models increases the overall result.
+   Random forest adds additional randomness to the model, while growing the trees. Instead of searching for the most important feature while splitting a node,
+   it searches for the best feature among a random subset of features. This results in a wide diversity that generally results in a better model.
+   Therefore, in random forest, only a random subset of the features is taken into consideration by the algorithm for splitting a node. You can even make trees more random 
+   by additionally using random thresholds for each feature rather than searching for the best possible thresholds.
+   
+   IMPORTANT HYPERPARAMETERS
+The hyperparameters in random forest are either used to increase the predictive power of the model or to make the model faster.
+1. Increasing the predictive power
+Firstly, there is the n_estimators hyperparameter, which is just the number of trees the algorithm builds before taking the maximum voting or taking the averages of predictions.
+Another important hyperparameter is max_features, which is the maximum number of features random forest considers to split a node. Sklearn provides several options.
+
+2. Increasing the model's speed
+The n_jobs hyperparameter tells the engine how many processors it is allowed to use. If it has a value of one, it can only use one processor. A value of “-1” means that 
+there is no limit. The random_state hyperparameter makes the model’s output replicable.
+Lastly, there is the oob_score (also called oob sampling), which is a random forest cross-validation method. In this sampling, about one-third of the data is not used to
+train the model and can be used to evaluate its performance.
+
+2. Neural networks:
+A neural network is either a biological neural network, made up of real biological neurons, or an artificial neural network, designed to recognize patterns and solve
+business problems. 
+    1. Building Blocks: Neurons
+First, we have to talk about neurons, the basic unit of a neural network. A neuron takes inputs, does some math with them, and produces one output. 
+3 things are happening here. First, each input is multiplied by a weight: 
+
+x_1 \rightarrow x_1 * w_1
+x 
+1
+​	
+ →x 
+1
+​	
+ ∗w 
+1
+​	
+ 
+x_2 \rightarrow x_2 * w_2
+x 
+2
+​	
+ →x 
+2
+​	
+ ∗w 
+2
+​	
+ 
+Next, all the weighted inputs are added together with a bias bb: 
+
+(x_1 * w_1) + (x_2 * w_2) + b
+(x 
+1
+​	
+ ∗w 
+1
+​	
+ )+(x 
+2
+​	
+ ∗w 
+2
+​	
+ )+b
+Finally, the sum is passed through an activation function: 
+
+y = f(x_1 * w_1 + x_2 * w_2 + b)
+
+A neural network is nothing more than a bunch of neurons connected together. A neural network can have any number of layers with any number of neurons in those layers.
+The basic idea stays the same: feed the input(s) forward through the neurons in the network to get the output(s) at the end.
+
+Loss
+Before we train our network, we first need a way to quantify how “good” it’s doing so that it can try to do “better”. That’s what the loss is.
+We’ll use the mean squared error (MSE) loss in this case.
 
