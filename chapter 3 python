@@ -1,0 +1,33 @@
+                                        Chapter 3 - Data Wrangling:
+                                        
+Data wrangling involves processing the data in various formats like - merging, grouping, concatenating etc. for the purpose of analysing or getting them ready to be used 
+with another set of data.
+
+Data Wrangling is a crucial topic for Data Science and Data Analysis. Pandas Framework of Python is used for Data Wrangling. Pandas is an open-source library specifically developed for Data Analysis and Data Science. The process like data sorting or filtration, Data grouping, etc.
+
+Data wrangling in python deals with the below functionalities:
+
+Data exploration: In this process, the data is studied, analyzed and understood by visualizing representations of data.
+Dealing with missing values: Most of the datasets having a vast amount of data contain missing values of NaN, they are needed to be taken care of by replacing them with mean, mode, the most frequent value of the column or simply by dropping the row having a NaN value.
+Reshaping data: In this process, data is manipulated according to the requirements, where new data can be added or pre-existing data can be modified.
+Filtering data: Some times datasets are comprised of unwanted rows or columns which are required to be removed or filtered
+Other: After dealing with the raw dataset with the above functionalities we get an efficient dataset as per our requirements and then it can be used for a required purpose like data analyzing, machine learning, data visualization, model training etc.
+
+1. Merging Data:
+  The Pandas library in python provides a single function, merge, as the entry point for all standard database join operations between DataFrame objects −
+pd.merge(left, right, how='inner', on=None, left_on=None, right_on=None,
+left_index=False, right_index=False, sort=True).
+
+2. Grouping Data
+Grouping data sets is a frequent need in data analysis where we need the result in terms of various groups present in the data set.
+Panadas has in-built methods which can roll the data into various groups.
+
+3. Time series data handling
+Time series data is one of the most important forms of data you will find while working with financial data, weather data etc.
+You’ll want to look at certain periods of time to see climate patterns or the differences between financial growth and stagnation.
+These operations are performed  using Pandas and Python’s datetime library.
+
+4. Exporting data
+Export the result of one of our previous queries to an Excel sheet.
+This is an important step to consider whenever you’re done with data analysis: how to best share your results. You’ll want to think carefully about the different 
+data formats your colleagues work in. Make sure that data is presented to them in the best way possible.
