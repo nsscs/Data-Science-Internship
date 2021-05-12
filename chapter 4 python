@@ -1,0 +1,46 @@
+                                                Chapter 4 SUPERVISED MACHINE LEARNING
+                                                
+Supervised learning is one of the major categories of machine learning algorithms. In this form of learning, the data contains labeled examples of the concept you want the 
+algorithm to learn. The algorithm learns to distinguish the two categories. This kind of distinction between categories is called ‘classification’. 
+Another kind of supervised learning is ‘regression’, where an algorithm learns to predict values on a continuous scale. 
+
+4.1 LINEAR PREDICTIONS
+Linear methods are the simplest, yet often the fastest and most effective set of algorithms.
+They are divided as follows:
+1. Linear regression:
+  Linear regression may be defined as the statistical model that analyzes the linear relationship between a dependent variable with given set of independent variables.
+  Linear relationship between variables means that when the value of one or more independent variables will change (increase or decrease), the value of dependent variable 
+  will also change accordingly (increase or decrease).
+
+Mathematically the relationship can be represented with the help of following equation −
+
+Y=mX+b , Y - dependent variable we are trying to predict.
+         m - slop of the regression line which represents the effect X has on Y.
+         X - X is the independent variable we are using to make predictions.
+         
+Mathematically a linear relationship represents a straight line when plotted as a graph. A non-linear relationship where the exponent of any variable is not equal to 1 creates
+a curve.
+*The cost function:
+We need to come up with two pretty good numbers that make the line fit the data. Here's how we do it:
+
+1. Pick two starting numbers. These are traditionally called theta_0 and theta_1. Zero and zero are a good first guess for these.
+2. Draw a line using those numbers.
+Calculate how far off we are, on average, from the actual data:  This is called the cost function. You pass theta_0 and theta_1 into the function, and it tells you how far off
+that line is (i.e. the cost of using that line).
+MSE measures the average squared difference between an observation’s actual and predicted values. The output is a single number representing the cost, or score, 
+associated with our current set of weights. Our goal is to minimize MSE to improve the accuracy of our model.
+Given our simple linear equation y=mx+b, we can calculate MSE as:
+
+MSE=1N∑i=1n(yi−(mxi+b))2 
+where:
+N is the total number of observations (data points)
+1N∑ni=1 is the mean
+yi is the actual value of an observation and mxi+b is our prediction
+ 
+*Gradient descent:
+To minimize MSE we use Gradient Descent to calculate the gradient of our cost function. Gradient descent consists of looking at the error that our weight currently gives us,
+using the derivative of the cost function to find the gradient. 
+
+calculate the gradient of this cost function as:
+f′(m,b)=⎡⎣dfdmdfdb⎤⎦=[1N∑−xi⋅2(yi−(mxi+b))1N∑−1⋅2(yi−(mxi+b))]=[1N∑−2xi(yi−(mxi+b))1N∑−2(yi−(mxi+b))]
+
