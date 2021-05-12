@@ -1,6 +1,6 @@
 #   Basics of Python and Machine Learning
 
-### 1. Getting started with Machine learning
+Chapter 1 -  Getting started with Machine learning
 
 Machine learning is a set of statistical techniques and algorithms designed to find and use structure and patterns in data to make interesting predictions
 or provide cool insights. Organizations use machine learning for all kinds of applications: whether it’s translating text from one language to another and many others.
@@ -26,7 +26,38 @@ or provide cool insights. Organizations use machine learning for all kinds of ap
         *  Data Wrangle:
             First, you need to look through the data that you’ve extracted, and make sure you understand what every column means. We have to look into various details such as 
             missing values, data range , time zones for validation and many other details depending on the problem assigned. Data must be clean by recovering missing values 
+             Finally, after you’re done cleaning your dataset, next step is to   start drawing some insights from the data.
+        *  Explore your data:
+            Task is  to find out what information the data contains, and which parts of the data are significant in answering your questions. This step is called exploratory                 data analysis.
+        *   Analyze Your Data In Depth:
+            In order to create a predictive model, you must use techniques from machine learning. A machine learning model takes a set of data points, where each data point is               expressed as a feature vector.
+        *   Visualize and Communicate Your Findings:
+            The model developed must be presented with the results, and the conclusions drawn so far presented in a graph or speadsheet.
+  
+      1.2 Short History on Machine learning:
+      
+            * 1950 — Alan Turing creates the “Turing Test” to determine if a computer has real intelligence.
+            *1952 — Arthur Samuel wrote the first computer learning program. The program was the game of checkers, and the IBM computer improved at the game the more it played.
+            *1957 — Frank Rosenblatt designed the first neural network for computers (the perceptron), which simulate the thought processes of the human brain.
+            * 1967 — The “nearest neighbor” algorithm was written, allowing computers to begin using very basic pattern recognition. T
+            * 1979 — Students at Stanford University invent the “Stanford Cart” which can navigate obstacles in a room on its own.
+            * 1981 — Gerald Dejong introduces the concept of Explanation Based Learning (EBL).
+            * 1985 — Terry Sejnowski invents NetTalk, which learns to pronounce words the same way a baby does.
+            * 1990s — Work on machine learning shifts from a knowledge-driven approach to a data-driven approach.
+            * 1997 — IBM’s Deep Blue beats the world champion at chess.
+            * 2006 — Geoffrey Hinton coins the term “deep learning” to explain new algorithms that let computers “see” and distinguish objects and text in images and videos.
+            * 2010 — The Microsoft Kinect can track 20 human features at a rate of 30 times per second.
+            * 2011 — IBM’s Watson beats its human competitors at Jeopardy.
+            * 2011 — Google Brain is developed.
+            * 2012 – Google’s X Lab develops a machine learning algorithm that is able to autonomously browse YouTube videos containing cats.
+            * 2014 – Facebook develops DeepFace.
+            * 2015 – Amazon launches its own machine learning platform.
+            * 2015 – Microsoft creates the Distributed Machine Learning Toolkit.
+            * 2015 – Over 3,000 AI and Robotics researchers, endorsed by Stephen Hawking, Elon Musk and Steve Wozniak (among many others), sign an open letter warning of the                         danger of autonomous weapons which select and engage targets without human intervention.
+            * 2016 – Google’s artificial intelligence algorithm beats a professional player at the Chinese board game Go.
+        
+        1.3 The great A.I Awakening
+            Google's decision to reorganize itself around A.I. was the first major manifestation of what has become an industrywide machine-learning delirium. Over the past four             years, six companies in particular — Google, Facebook, Apple, Amazon, Microsoft and the Chinese firm Baidu — have touched off an arms race for A.I.
             
-        *  
               
                
