@@ -1,0 +1,107 @@
+                                                            CHAPTER 2
+                                                            
+Introduction to Machine Learning Model Evaluation:
+
+While training a model is a key step, how the model generalizes on unseen data is an equally important aspect that should be considered in every machine learning pipeline. We need to know whether it actually works and, consequently, if we can trust its predictions.
+
+Model Evaluation Techniques
+* By evaluating the performance of a machine learning model, which is an integral component of any data science project. Model evaluation aims to estimate the generalization accuracy of a model on future (unseen/out-of-sample) data.
+Methods for evaluating a model’s performance are divided into 2 categories: namely, holdout and Cross-validation. Both methods use a test set (i.e data not seen by the model) to evaluate model performance. It’s not recommended to use the data we used to build the model to evaluate it. This is because our model will simply remember the whole training set, and will therefore always predict the correct label for any point in the training set. This is known as overfitting.
+
+Holdout
+The purpose of holdout evaluation is to test a model on different data than it was trained on. This provides an unbiased estimate of learning performance.
+In this method, the dataset is randomly divided into three subsets:
+Training set is a subset of the dataset used to build predictive models.
+Validation set is a subset of the dataset used to assess the performance of the model built in the training phase. It provides a test platform for fine-tuning a model’s parameters and selecting the best performing model. Not all modeling algorithms need a validation set.
+Test set, or unseen data, is a subset of the dataset used to assess the likely future performance of a model. If a model fits to the training set much better than it fits the test set, overfitting is probably the cause.
+The holdout approach is useful because of its speed, simplicity, and flexibility. However, this technique is often associated with high variability since differences in the training and test dataset can result in meaningful differences in the estimate of accuracy.
+
+Cross-Validation
+Cross-validation is a technique that involves partitioning the original observation dataset into a training set, used to train the model, and an independent set used to evaluate the analysis.
+The most common cross-validation technique is k-fold cross-validation, where the original dataset is partitioned into k equal size subsamples, called folds. The k is a user-specified number, usually with 5 or 10 as its preferred value. This is repeated k times, such that each time, one of the k subsets is used as the test set/validation set and the other k-1 subsets are put together to form a training set. The error estimation is averaged over all k trials to get the total effectiveness of our model.
+
+Model Evaluation Metrics
+Model evaluation metrics are required to quantify model performance. The choice of evaluation metrics depends on a given machine learning task (such as classification, regression, ranking, clustering, topic modeling, among others). Some metrics, such as precision-recall, are useful for multiple tasks. Supervised learning tasks such as classification and regression constitutes a majority of machine learning applications.
+
+
+Classification Metrics
+In this section we will review some of the metrics used in classification problems, namely:
+Classification Accuracy
+Confusion matrix
+Logarithmic Loss
+Area under curve (AUC)
+F-Measure
+Classification Accuracy
+Accuracy is a common evaluation metric for classification problems. It’s the number of correct predictions made as a ratio of all predictions made. We use sklearn module to compute the accuracy of a classification task.
+
+
+
+Confusion Matrix
+A confusion matrix provides a more detailed breakdown of correct and incorrect classifications for each class. 
+
+Logarithmic Loss
+Logarithmic loss (logloss) measures the performance of a classification model where the prediction input is a probability value between 0 and 1. Log loss increases as the predicted probability diverges from the actual label. The goal of machine learning models is to minimize this value. As such, smaller logloss is better, with a perfect model having a log loss of 0.
+
+Area under Curve (AUC)
+Area under ROC Curve is a performance metric for measuring the ability of a binary classifier to discriminate between positive and negative class.
+
+F-Measure
+F-measure (also F-score) is a measure of a test’s accuracy that considers both the precision and the recall of the test to compute the score. Precision is the number of correct positive results divided by the total predicted positive observations. Recall, on the other hand, is the number of correct positive results divided by the number of all relevant samples (total actual positives).
+
+K-nearest neighbors (KNN) algorithm is a type of supervised ML algorithm which can be used for both classification as well as regression predictive problems. However, it is mainly used for classification predictive problems in industry. The following two properties would define KNN well −
+
+Lazy learning algorithm − KNN is a lazy learning algorithm because it does not have a specialized training phase and uses all the data for training while classification.
+
+Non-parametric learning algorithm − KNN is also a non-parametric learning algorithm because it doesn’t assume anything about the underlying data.
+                                        KNN Algorithm
+Working of KNN Algorithm
+K-nearest neighbors (KNN) algorithm uses ‘feature similarity’ to predict the values of new datapoints which further means that the new data point will be assigned a value based on how closely it matches the points in the training set. We can understand its working with the help of following steps −
+
+Step 1 − For implementing any algorithm, we need dataset. So during the first step of KNN, we must load the training as well as test data.
+
+Step 2 − Next, we need to choose the value of K i.e. the nearest data points. K can be any integer.
+
+Step 3 − For each point in the test data do the following −
+
+3.1 − Calculate the distance between test data and each row of training data with the help of any of the method namely: Euclidean, Manhattan or Hamming distance. The most commonly used method to calculate distance is Euclidean.
+
+3.2 − Now, based on the distance value, sort them in ascending order.
+
+3.3 − Next, it will choose the top K rows from the sorted array.
+
+3.4 − Now, it will assign a class to the test point based on most frequent class of these rows.
+
+Step 4 − End
+
+Regularization in Machine Learning
+What is Regularization?
+Regularization is one of the most important concepts of machine learning. It is a technique to prevent the model from overfitting by adding extra information to it.
+
+Sometimes the machine learning model performs well with the training data but does not perform well with the test data. It means the model is not able to predict the output when deals with unseen data by introducing noise in the output, and hence the model is called overfitted. This problem can be deal with the help of a regularization technique.
+
+This technique can be used in such a way that it will allow to maintain all variables or features in the model by reducing the magnitude of the variables. Hence, it maintains accuracy as well as a generalization of the model.
+
+Regularization works by adding a penalty or complexity term to the complex model. Let's consider the simple linear regression equation:
+
+y= β0+β1x1+β2x2+β3x3+⋯+βnxn +b
+In the above equation, Y represents the value to be predicted
+
+X1, X2, …Xn are the features for Y.
+
+β0,β1,…..βn are the weights or magnitude attached to the features, respectively. Here represents the bias of the model, and b represents the intercept.
+
+There are mainly two types of regularization techniques, which are given below:
+
+Ridge Regression
+Lasso Regression
+Ridge Regression
+Ridge regression is one of the types of linear regression in which a small amount of bias is introduced so that we can get better long-term predictions.
+Ridge regression is a regularization technique, which is used to reduce the complexity of the model. It is also called as L2 regularization.
+In this technique, the cost function is altered by adding the penalty term to it. The amount of bias added to the model is called Ridge Regression penalty. We can calculate it by multiplying with the lambda to the squared weight of each individual feature.
+
+Lasso Regression:
+Lasso regression is another regularization technique to reduce the complexity of the model. It stands for Least Absolute and Selection Operator.
+It is similar to the Ridge Regression except that the penalty term contains only the absolute weights instead of a square of weights.
+Since it takes absolute values, hence, it can shrink the slope to 0, whereas Ridge Regression can only shrink it near to 0.
+
+

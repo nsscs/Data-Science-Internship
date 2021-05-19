@@ -1,0 +1,133 @@
+                                                CHAPTER 3
+                                                
+                                            Natural Language Processing
+                                            
+Natural Language Processing (NLP) is a subfield of Computer Science that deals with Artificial Intelligence (AI), which enables computers to understand and process human language.
+
+Ambiguity and Uncertainty in Language
+Ambiguity, generally used in natural language processing, can be referred as the ability of being understood in more than one way. In simple terms, we can say that ambiguity is the capability of being understood in more than one way. Natural language is very ambiguous. NLP has the following types of ambiguities −
+
+Lexical Ambiguity
+The ambiguity of a single word is called lexical ambiguity. For example, treating the word silver as a noun, an adjective, or a verb.
+
+Syntactic Ambiguity
+This kind of ambiguity occurs when a sentence is parsed in different ways. For example, the sentence “The man saw the girl with the telescope”. It is ambiguous whether the man saw the girl carrying a telescope or he saw her through his telescope.
+
+Semantic Ambiguity
+This kind of ambiguity occurs when the meaning of the words themselves can be misinterpreted. In other words, semantic ambiguity happens when a sentence contains an ambiguous word or phrase. For example, the sentence “The car hit the pole while it was moving” is having semantic ambiguity because the interpretations can be “The car, while moving, hit the pole” and “The car hit the pole while the pole was moving”.
+
+Anaphoric Ambiguity
+This kind of ambiguity arises due to the use of anaphora entities in discourse. For example, the horse ran up the hill. It was very steep. It soon got tired. Here, the anaphoric reference of “it” in two situations cause ambiguity.
+
+Pragmatic ambiguity
+Such kind of ambiguity refers to the situation where the context of a phrase gives it multiple interpretations. In simple words, we can say that pragmatic ambiguity arises when the statement is not specific. For example, the sentence “I like you too” can have multiple interpretations like I like you (just like you like me), I like you (just like someone else dose).
+
+logical steps in natural language processing −
+
+Morphological Processing
+It is the first phase of NLP. The purpose of this phase is to break chunks of language input into sets of tokens corresponding to paragraphs, sentences and words. For example, a word like “uneasy” can be broken into two sub-word tokens as “un-easy”.
+
+Syntax Analysis
+It is the second phase of NLP. The purpose of this phase is two folds: to check that a sentence is well formed or not and to break it up into a structure that shows the syntactic relationships between the different words. For example, the sentence like “The school goes to the boy” would be rejected by syntax analyzer or parser.
+
+Semantic Analysis
+It is the third phase of NLP. The purpose of this phase is to draw exact meaning, or you can say dictionary meaning from the text. The text is checked for meaningfulness. For example, semantic analyzer would reject a sentence like “Hot ice-cream”.
+
+Pragmatic Analysis
+It is the fourth phase of NLP. Pragmatic analysis simply fits the actual objects/events, which exist in a given context with object references obtained during the last phase (semantic analysis). For example, the sentence “Put the banana in the basket on the shelf” can have two semantic interpretations and pragmatic analyzer will choose between these two possibilities.
+
+Corpus
+A corpus is a large and structured set of machine-readable texts that have been produced in a natural communicative setting. Its plural is corpora. They can be derived in different ways like text that was originally electronic, transcripts of spoken language and optical character recognition, etc.
+
+Elements of Corpus Design
+Language is infinite but a corpus has to be finite in size. For the corpus to be finite in size, we need to sample and proportionally include a wide range of text types to ensure a good corpus design.
+
+Let us now learn about some important elements for corpus design −
+
+Corpus Representativeness
+Representativeness is a defining feature of corpus design.
+
+representativeness of a corpus are determined by the following two factors −
+
+Balance − The range of genre include in a corpus
+
+Sampling − How the chunks for each genre are selected.
+
+Corpus Balance
+Another very important element of corpus design is corpus balance – the range of genre included in a corpus. We have already studied that representativeness of a general corpus depends upon how balanced the corpus is. A balanced corpus covers a wide range of text categories, which are supposed to be representatives of the language.
+
+Sampling
+Another important element of corpus design is sampling. Corpus representativeness and balance is very closely associated with sampling.
+
+While obtaining a representative sample, we need to consider the following −
+
+Sampling unit − It refers to the unit which requires a sample. For example, for written text, a sampling unit may be a newspaper, journal or a book.
+
+Sampling frame − The list of al sampling units is called a sampling frame.
+
+Population − It may be referred as the assembly of all sampling units. It is defined in terms of language production, language reception or language as a product.
+
+Corpus Size
+Another important element of corpus design is its size. How large the corpus should be? There is no specific answer to this question. The size of the corpus depends upon the purpose for which it is intended as well as on some practical considerations as follows −
+
+Kind of query anticipated from the user.
+
+The methodology used by the users to study the data.
+
+Availability of the source of data.
+
+Word Embeddings or Word vectorization is a methodology in NLP to map words or phrases from vocabulary to a corresponding vector of real numbers which used to find word predictions, word similarities/semantics.
+The process of converting words into numbers are called Vectorization.
+Word embeddings help in the following use cases:
+
+Compute similar words
+Text classifications
+Document clustering/grouping
+Feature extraction for text classifications
+Natural language processing.
+
+* After the words are converted as vectors, we need to use some techniques such as Euclidean distance, Cosine Similarity to identify similar words.
+
+“Cosine Similarity” approach is used to find the similarity between the documents.
+Mathematically, it measures the cosine of the angle between two vectors (item1, item2) projected in an N-dimensional vector space. The advantageous of cosine similarity is, it predicts the document similarity even Euclidean is distance.
+
+                                                                LSTM Networks
+                                                                
+What is a Long Short-Term Memory Cell?
+This is a special neuron for memorizing long-term dependencies. LSTM contains an internal state variable which is passed from one cell to the other and modified by Operation Gates (we’ll discuss this later in our example).
+LSTM is smart enough to determine how long to hold onto old information, when to remember and forget, and how to make connections between old memory with the new input.
+
+LSTM Networks
+Long Short Term Memory networks – usually just called “LSTMs” – are a special kind of RNN, capable of learning long-term dependencies. They were introduced by Hochreiter & Schmidhuber (1997), and were refined and popularized by many people in following work.1 They work tremendously well on a large variety of problems, and are now widely used.
+
+LSTMs are explicitly designed to avoid the long-term dependency problem. Remembering information for long periods of time is practically their default behavior, not something they struggle to learn!
+
+All recurrent neural networks have the form of a chain of repeating modules of neural network. In standard RNNs, this repeating module will have a very simple structure, such as a single tanh layer.
+
+The key to LSTMs is the cell state, the horizontal line running through the top of the diagram.
+
+The cell state is kind of like a conveyor belt. It runs straight down the entire chain, with only some minor linear interactions. It’s very easy for information to just flow along it unchanged.
+
+The first step in our LSTM is to decide what information we’re going to throw away from the cell state. This decision is made by a sigmoid layer called the “forget gate layer.” It looks at ht−1 and xt, and outputs a number between 0 and 1 for each number in the cell state Ct−1. A 1 represents “completely keep this” while a 0 represents “completely get rid of this.”
+
+Let’s go back to our example of a language model trying to predict the next word based on all the previous ones. In such a problem, the cell state might include the gender of the present subject, so that the correct pronouns can be used. When we see a new subject, we want to forget the gender of the old subject.
+
+The next step is to decide what new information we’re going to store in the cell state. This has two parts. First, a sigmoid layer called the “input gate layer” decides which values we’ll update. Next, a tanh layer creates a vector of new candidate values, C~t, that could be added to the state. In the next step, we’ll combine these two to create an update to the state.
+
+In the example of our language model, we’d want to add the gender of the new subject to the cell state, to replace the old one we’re forgetting.
+
+It’s now time to update the old cell state, Ct−1, into the new cell state Ct. The previous steps already decided what to do, we just need to actually do it.
+
+We multiply the old state by ft, forgetting the things we decided to forget earlier. Then we add it∗C~t. This is the new candidate values, scaled by how much we decided to update each state value.
+
+In the case of the language model, this is where we’d actually drop the information about the old subject’s gender and add the new information, as we decided in the previous steps.
+
+Finally, we need to decide what we’re going to output. This output will be based on our cell state, but will be a filtered version. First, we run a sigmoid layer which decides what parts of the cell state we’re going to output. Then, we put the cell state through tanh (to push the values to be between −1 and 1) and multiply it by the output of the sigmoid gate, so that we only output the parts we decided to.
+
+For the language model example, since it just saw a subject, it might want to output information relevant to a verb, in case that’s what is coming next. For example, it might output whether the subject is singular or plural, so that we know what form a verb should be conjugated into if that’s what follows next.
+
+Transformer – a model that uses attention to boost the speed with which these models can be trained. The Transformers outperforms the Google Neural Machine Translation model in specific tasks. The biggest benefit, however, comes from how The Transformer lends itself to parallelization.
+* It is basically, A transformer is a deep learning model that adopts the mechanism of attention, weighing the influence of different parts of the input data.Like recurrent neural networks (RNNs), transformers are designed to handle sequential input data, such as natural language, for tasks such as translation and text summarization.
+
+Multiple Attention Heads
+In the Transformer, the Attention module repeats its computations multiple times in parallel. Each of these is called an Attention Head. The Attention module splits its Query, Key, and Value parameters N-ways and passes each split independently through a separate Head. All of these similar Attention calculations are then combined together to produce a final Attention score. This is called Multi-head attention and gives the Transformer greater power to encode multiple relationships and nuances for each word.

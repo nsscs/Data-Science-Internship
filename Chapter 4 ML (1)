@@ -1,0 +1,120 @@
+                                                        Chapter 4 
+                                                        
+                     Computer Vision
+                     
+Computer Vision
+Computer vision is a discipline that studies how to reconstruct, interrupt and understand a 3d scene from its 2d images, in terms of the properties of the structure present in the scene.
+
+Computer Vision Hierarchy
+Computer vision is divided into three basic categories as following −
+
+Low-level vision − It includes process image for feature extraction.
+
+Intermediate-level vision − It includes object recognition and 3D scene interpretation
+
+High-level vision − It includes conceptual description of a scene like activity, intention and behavior.
+
+Installing Useful Packages
+For Computer vision with Python, you can use a popular library called OpenCV (Open Source Computer Vision).
+
+Reading, Writing and Displaying an Image
+Most of the CV applications need to get the images as input and produce the images as output. In this section, you will learn how to read and write image file with the help of functions provided by OpenCV.
+
+OpenCV functions for Reading, Showing, Writing an Image File
+OpenCV provides the following functions for this purpose −
+
+imread() function − This is the function for reading an image. OpenCV imread() supports various image formats like PNG, JPEG, JPG, TIFF, etc.
+
+imshow() function − This is the function for showing an image in a window. The window automatically fits to the image size. OpenCV imshow() supports various image formats like PNG, JPEG, JPG, TIFF, etc.
+
+imwrite() function − This is the function for writing an image. OpenCV imwrite() supports various image formats like PNG, JPEG, JPG, TIFF, etc.
+
+Color Space Conversion
+In OpenCV, the images are not stored by using the conventional RGB color, rather they are stored in the reverse order i.e. in the BGR order. Hence the default color code while reading an image is BGR. The cvtColor() color conversion function in for converting the image from one color code to other.
+
+Edge Detection
+Humans, after seeing a rough sketch, can easily recognize many object types and their poses. That is why edges play an important role in the life of humans as well as in the applications of computer vision. OpenCV provides very simple and useful function called Canny()for detecting the edges.
+
+Face Detection
+Face detection is one of the fascinating applications of computer vision which makes it more realistic as well as futuristic. OpenCV has a built-in facility to perform face detection. We are going to use the Haar cascade classifier for face detection.
+
+Eye Detection
+Eye detection is another fascinating application of computer vision which makes it more realistic as well as futuristic. OpenCV has a built-in facility to perform eye detection. We are going to use the Haar cascade classifier for eye detection.
+
+                                            Fully Convolutional Networks
+                                            
+A fully convolutional network (FCN)  uses a convolutional neural network to transform image pixels to pixel categories. Unlike the convolutional neural networks previously introduced, an FCN transforms the height and width of the intermediate layer feature map back to the size of input image through the transposed convolution layer, so that the predictions have a one-to-one correspondence with input image in spatial dimension (height and width). Given a position on the spatial dimension, the output of the channel dimension will be a category prediction of the pixel corresponding to the location.
+
+
+The fully convolutional network first uses the convolutional neural network to extract image features, then transforms the number of channels into the number of categories through the  1×1  convolution layer, and finally transforms the height and width of the feature map to the size of the input image by using the transposed convolution layer to output the category of each pixel.
+
+In a fully convolutional network, we initialize the transposed convolution layer for upsampled bilinear interpolation.
+
+YOLO for Object Detection
+Object detection is a computer vision task that involves both localizing one or more objects within an image and classifying each object in the image.
+
+It is a challenging computer vision task that requires both successful object localization in order to locate and draw a bounding box around each object in an image, and object classification to predict the correct class of object that was localized.
+
+The “You Only Look Once,” or YOLO, family of models are a series of end-to-end deep learning models designed for fast object detection.
+The approach involves a single deep convolutional neural network (originally a version of GoogLeNet, later updated and called DarkNet based on VGG) that splits the input into a grid of cells and each cell directly predicts a bounding box and object classification. The result is a large number of candidate bounding boxes that are consolidated into a final prediction by a post-processing step.
+
+There are three main variations of the approach, at the time of writing; they are YOLOv1, YOLOv2, and YOLOv3. The first version proposed the general architecture, whereas the second version refined the design and made use of predefined anchor boxes to improve bounding box proposal, and version three further refined the model architecture and training process.
+
+Although the accuracy of the models is close but not as good as Region-Based Convolutional Neural Networks (R-CNNs), they are popular for object detection because of their detection speed, often demonstrated in real-time on video or with camera feed input.
+
+YOLO makes use of only convolutional layers, making it a fully convolutional network (FCN). It has 75 convolutional layers, with skip connections and upsampling layers. No form of pooling is used, and a convolutional layer with stride 2 is used to downsample the feature maps. This helps in preventing loss of low-level features often attributed to pooling.
+
+Being a FCN, YOLO is invariant to the size of the input image. However, in practice, we might want to stick to a constant input size due to various problems that only show their heads when we are implementing the algorithm.
+
+A big one amongst these problems is that if we want to process our images in batches (images in batches can be processed in parallel by the GPU, leading to speed boosts), we need to have all images of fixed height and width. This is needed to concatenate multiple images into a large batch (concatenating many PyTorch tensors into one)
+
+The network downsamples the image by a factor called the stride of the network. For example, if the stride of the network is 32, then an input image of size 416 x 416 will yield an output of size 13 x 13. Generally, stride of any layer in the network is equal to the factor by which the output of the layer is smaller than the input image to the network.
+
+Interpreting the output
+Typically, (as is the case for all object detectors) the features learned by the convolutional layers are passed onto a classifier/regressor which makes the detection prediction (coordinates of the bounding boxes, the class label.. etc).
+
+In YOLO, the prediction is done by using a convolutional layer which uses 1 x 1 convolutions.
+Prediction across different scales.
+YOLO v3 makes prediction across 3 different scales. The detection layer is used make detection at feature maps of three different sizes, having strides 32, 16, 8 respectively. This means, with an input of 416 x 416, we make detections on scales 13 x 13, 26 x 26 and 52 x 52.
+
+The network downsamples the input image until the first detection layer, where a detection is made using feature maps of a layer with stride 32. Further, layers are upsampled by a factor of 2 and concatenated with feature maps of a previous layers having identical feature map sizes. Another detection is now made at layer with stride 16. The same upsampling procedure is repeated, and a final detection is made at the layer of stride 8.
+
+At each scale, each cell predicts 3 bounding boxes using 3 anchors, making the total number of anchors used 9.
+
+* Image segmentation is the task of partitioning an image into multiple segments. This makes it a whole lot easier to analyze the given image.
+
+Semantic Segmentation:
+
+Semantic segmentation is the task of assigning a class to every pixel in a given image.
+
+Classification assigns a single class to the whole image whereas semantic segmentation classifies every pixel of the image to one of the classes.
+
+Two popular applications of semantic segmentation include:
+
+Self-driving vehicles: These rely heavily on such segmented images to navigate through routes
+Portrait mode on Google’s Pixel phone: Here, instead of multiple classes, we need to classify every pixel as either belonging to the foreground or the background and then blurring the background part of the image
+ 
+ 1-Convolutional neural networks for segmentation
+Usually, the architecture of the model contains several convolutional layers, non-linear activations, batch normalization, and pooling layers. The initial layers learn the low-level concepts such as edges and colors and the later level layers learn the higher level concepts such as different objects.
+
+At a lower level, the neurons contain information for a small region of the image, whereas at a higher level the neurons contain information for a large region of the image. Thus, as we add more layers, the size of the image keeps on decreasing and the number of channels keeps on increasing. The downsampling is done by the pooling layers.
+
+For the case of image classification, we need to map the spatial tensor from the convolution layers to a fixed length vector. To do that, fully connected layers are used, which destroy all the spatial information.
+
+What are the existing Semantic Segmentation approaches?
+A general semantic segmentation architecture can be broadly thought of as an encoder network followed by a decoder network:
+
+The encoder is usually is a pre-trained classification network like VGG/ResNet followed by a decoder network.
+The task of the decoder is to semantically project the discriminative features (lower resolution) learnt by the encoder onto the pixel space (higher resolution) to get a dense classification.
+
+2 — Region-Based Semantic Segmentation
+The region-based methods generally follow the “segmentation using recognition” pipeline, which first extracts free-form regions from an image and describes them, followed by region-based classification. At test time, the region-based predictions are transformed to pixel predictions, usually by labeling a pixel according to the highest scoring region that contains it.
+
+3 — Weakly Supervised Semantic Segmentation
+Most of the relevant methods in semantic segmentation rely on a large number of images with pixel-wise segmentation masks. However, manually annotating these masks is quite time-consuming, frustrating and commercially expensive. Therefore, some weakly supervised methods have recently been proposed, which are dedicated to fulfilling the semantic segmentation by utilizing annotated bounding boxes.
+
+UNet is a convolutional neural network architecture that expanded with few changes in the CNN architecture. It was invented to deal with biomedical images where the target is not only to classify whether there is an infection or not but also to identify the area of infection.
+
+The UNet architecture was introduced for BioMedical Image segmentation by Olag Ronneberger et al. The introduced architecture had two main parts that were encoder and decoder. The encoder is all about the covenant layers followed by pooling operation. It is used to extract the factors in the image. The second part decoder uses transposed convolution to permit localization. It is again an F.C connected layers network.
+
+

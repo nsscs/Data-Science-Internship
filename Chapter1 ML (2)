@@ -1,0 +1,131 @@
+                                                  CHAPTER - 1
+                                                  
+An Introduction to Decision Tree:
+
+Decision tree, is one of the classifiers we have in the world of machine learning, which closely resembles with human reasoning. It is also one of model we have, which comes under the category of supervised machine learning. In supervised machine learning, we are always given with the input data (also referred as features or independent features) and class labels(also referred as target feature or dependent feature).
+
+These are some key terminologies we must be aware of to work with Decision Tree:
+
+NODE: Each time we ask a question or make a decision stump, we represent the same as a NODE.
+ROOT: The topmost node of the tree which we start questioning with.
+INTERIOR: Any node, except the ROOT node, where we again ask a question.
+LEAF: When we reach a point where we don’t ask a question, but instead make a decision, we call it as LEAF node.
+
+Bsically, Decision trees are supervised learning algorithms, which means, we need to have labelled dataset and it can be used for both, classification and regression tasks, which means we can have it for categorical data or continuous data.
+
+Training flow of a Decision Tree:
+
+* Prepare the labelled data set, with independent feature{1, 2, 3, …, n} and dependent feature(target or class label).
+*Try to pick the best feature as the root node and thereafter, use intelligent strategies to split the nodes into multiple branches.
+*Grow the tree until we get a stopping criteria, i.e. the leaf node which would be the actual prediction when we make any query or ask for prediction.
+*Pass through the prediction data query through the tree until we arrive at some leaf node
+*Once we get the leaf node, we have the prediction!! 
+
+Entropy: It is a very interesting concept in the field of Information Theory. It is the notion of the impurity of the data.
+We can say that, a node in a decision tree is pure because there is only one class, no ambiguity in the class label.
+
+Let’s say we have Random Variable, X, where x can be x1, x2, x3, x4…xn
+Then, mathematically, Entropy can be defined as(also known as Shannon's entropy) this:
+    H(X) = ΣP(k) * log2(p(k))
+    
+    where,
+k = ranges from 1 through n
+H(x) = entropy of x
+P(k) = Probability of random variable X when (X = k)
+
+Information Gain :  the Information Gain of the dataset D, when we break it based on feature, Outlook, would be:
+
+Information Gain(Outlook)= Entropy(D) − Weighted Entropy after breaking the dataset
+
+Hence, Decision Tree would use this feature as the ROOT node of the tree. And once the data is split, we need to further check each of the small sub tree and perform the same activity and decide the next feature which has the highest IG, so that we can split the dataset further to get to leaf node.
+
+How to build a Tree ?
+With the understanding of what is Entropy and IG, we can build a tree, and here is the algorithmic steps:
+
+ *First the entropy of the total dataset is calculated for the target label/class.
+* The dataset is then split on different features.
+* The entropy for each branch is calculated. Then it is added proportionally, to get total weighted entropy for the split.
+* The resulting entropy is subtracted from the entropy before the split.
+* The result is the Information Gain.
+* The feature that yields the largest IG is chosen for the decision node.
+* Repeat step #2 to #6, for each subset of the data(for each internal node) until:
+All the dependent features are exhausted.
+The stopping criteria are met.
+Few of the stopping criteria used are:
+
+1. no. of levels of tree from the root node(or in other words, depth of the tree)
+2. Minimum no. of observations in the parent/child node(e.g. 10% of the training data)
+3. Minimum reduction of impurity index
+
+Algorithm behind decision tree
+So far,  Entropy as one of the ways to find the impurity of a node, but there are other techniques available to split the data, like Gini Impurity, Chi-Square, Variance, etc.. However, we have different algorithms to implement a Decision Tree model, and each uses different techniques to identify the impurity of a node, and hence the split. For example:
+
+ID3(Iterative Dichotomiser 3) algorithm - uses Entropy
+CART algorithm - uses Gini Impurity Index
+C4.5 - uses Gain Ratio
+
+                                        EXTRATREES ALGORITHM
+
+Extra Trees is an ensemble machine learning algorithm that combines the predictions from many decision trees.
+
+It is related to the widely used random forest algorithm. It can often achieve as-good or better performance than the random forest algorithm, although it uses a simpler algorithm to construct the decision trees used as members of the ensemble.
+
+It is also easy to use given that it has few key hyperparameters and sensible heuristics for configuring these hyperparameters.
+
+The Extra Trees algorithm works by creating a large number of unpruned decision trees from the training dataset. Predictions are made by averaging the prediction of the decision trees in the case of regression or using majority voting in the case of classification.
+
+Regression: Predictions made by averaging predictions from decision trees.
+Classification: Predictions made by majority voting from decision trees.
+
+How to Develop an Extra Trees Ensemble with Python
+by Jason Brownlee on April 22, 2020 in Ensemble Learning
+Tweet  Share
+Last Updated on April 27, 2021
+
+Extra Trees is an ensemble machine learning algorithm that combines the predictions from many decision trees.
+
+It is related to the widely used random forest algorithm. It can often achieve as-good or better performance than the random forest algorithm, although it uses a simpler algorithm to construct the decision trees used as members of the ensemble.
+
+It is also easy to use given that it has few key hyperparameters and sensible heuristics for configuring these hyperparameters.
+
+Extra Trees Scikit-Learn API
+Extra Trees ensembles can be implemented from scratch, although this can be challenging for beginners.
+
+The scikit-learn Python machine learning library provides an implementation of Extra Trees for machine learning.
+
+It is available in a recent version of the library.
+First, confirm that you are using a modern version of the library by running the following script:
+import sklearn
+print(sklearn.__version__)
+
+Extra Trees is provided via the ExtraTreesRegressor and ExtraTreesClassifier classes.
+
+Both models operate the same way and take the same arguments that influence how the decision trees are created.
+
+Randomness is used in the construction of the model. This means that each time the algorithm is run on the same data, it will produce a slightly different model.
+
+                                                            Gradient Boosting:
+
+The Gradient Boosting Machine is a powerful ensemble machine learning algorithm that uses decision trees.
+
+Boosting is a general ensemble technique that involves sequentially adding models to the ensemble where subsequent models correct the performance of prior models. AdaBoost was the first algorithm to deliver on the promise of boosting.
+
+Gradient boosting is a generalization of AdaBoosting, improving the performance of the approach and introducing ideas from bootstrap aggregation to further improve the models, such as randomly sampling the samples and features when fitting ensemble members.
+
+Gradient boosting performs well, if not the best, on a wide range of tabular datasets.
+
+There are three types of enhancements to basic gradient boosting that can improve performance:
+
+Tree Constraints: such as the depth of the trees and the number of trees used in the ensemble.
+Weighted Updates: such as a learning rate used to limit how much each tree contributes to the ensemble.
+Random sampling: such as fitting trees on random subsets of features and samples.
+
+Gradient Boosting Scikit-Learn API
+Gradient Boosting ensembles can be implemented from scratch although can be challenging for beginners.
+
+The scikit-learn Python machine learning library provides an implementation of Gradient Boosting ensembles for machine learning.
+
+Gradient boosting is provided via the GradientBoostingRegressor and GradientBoostingClassifier classes.
+
+Both models operate the same way and take the same arguments that influence how the decision trees are created and added to the ensemble.
+
